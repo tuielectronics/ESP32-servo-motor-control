@@ -19,18 +19,23 @@
 void setup() {
   Serial.begin(115200);
   SERIAL_DEBUG("Serial begin\n");
-  //servoConfig();
+  
+  //use MCPWM module to generate PWM
+  servoConfig();
 
-  //servoRun(SERVO_ANGLE_90);
+  servoRun(SERVO_ANGLE_90);
+  
+  //traditional way to generate PWM
+  /*
   pinMode(SERVO_PIN, OUTPUT);
   ledcSetup(0, 50, 10);
   ledcAttachPin(SERVO_PIN, 0);
   ledcWrite(0, 76);
 
-  
   _delay_ms(200);
   ledcWrite(0, 0);
   ledcDetachPin(SERVO_PIN);
+  */
 }
 
 void loop() {
